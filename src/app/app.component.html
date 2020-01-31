@@ -1,0 +1,27 @@
+<div class="wrapper">
+  <div class="card">
+    <h1>Firebase Demo SAML</h1>
+
+    <p class="status">
+      {{ (user$ | async) ? "Signed in" : "Not signed in yet" }}
+    </p>
+
+    <ul *ngIf="user$ | async as user" class="variables">
+      <li>User email: <strong>{{ user.email }}</strong></li>
+      <li>User ID: <strong>{{ user.uid }}</strong></li>
+    </ul>
+
+    <div class="buttons">
+      <button (click)="signInSAML()">Sign-in with JumpCloud Idp SAML</button>
+      <button (click)="signOut()">Sign-out</button>
+    </div>
+
+    <ul *ngIf="samlProfile" class="variables">
+      <li>First name: <strong>{{ samlProfile.firstName }}</strong></li>
+      <li>Last name: <strong>{{ samlProfile.lastName }}</strong></li>
+      <li>Employee ID: <strong>{{ samlProfile.employeeID }}</strong></li>
+      <li>Custom attribute: <strong>{{ samlProfile['sp-attr1'] }}</strong></li>
+    </ul>
+
+  </div>
+</div>
